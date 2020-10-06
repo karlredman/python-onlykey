@@ -192,7 +192,7 @@ def cli():
                 totpkey = base64.b32decode("".join(totpkey.split()).upper())
                 totpkey = binascii.hexlify(totpkey)
                 # pad with zeros for even digits
-                totpkey = totpkey.zfill(len(totpkey) + len(totpkey) % 2)
+                # totpkey = totpkey.zfill(len(totpkey) + len(totpkey) % 2)
                 payload = [int(totpkey[i: i+2], 16) for i in range(0, len(totpkey), 2)]
                 only_key.setslot(slot_id, MessageField.TOTPKEY, payload)
             elif sys.argv[3] == 'totpkey':
